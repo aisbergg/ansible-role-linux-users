@@ -1,0 +1,6 @@
+---
+- import_tasks: groups.yml
+  tags: [linux-users, groups]
+
+- import_tasks: users.yml
+  tags: [linux-users, users]
