@@ -1,4 +1,4 @@
-# Ansible Role: `aisbergg.linux-users`
+# Ansible Role: `aisbergg.linux_users`
 
 This Ansible role manages Linux users and groups. The role supports all relevant options of the Ansible [user](https://docs.ansible.com/ansible/latest/modules/user_module.html) and [group](https://docs.ansible.com/ansible/latest/modules/group_module.html) module. In addition it allows to manage the users SSH authorized keys and also allows to pass in passwords as plain text.
 
@@ -27,11 +27,11 @@ If you want to pass plaintext passwords to the `user` module, you need to have t
         authorized_key: ssh-ed25519 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         shell: /bin/zsh
         state: present
-     
+
       - name: bar
         state: absent
         remove: true
-      
+
       - name: yay
         uid: 991
         comment: "User for building and installing packages with YAY"
@@ -43,12 +43,12 @@ If you want to pass plaintext passwords to the `user` module, you need to have t
       - name: webteam
         state: present
         gid: 10000
-      
+
       - name: nginx
         state: absent
 
   roles:
-    - aisbergg.linux-users
+    - aisbergg.linux_users
 ```
 
 ## License
