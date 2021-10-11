@@ -1,6 +1,8 @@
 ---
-- import_tasks: groups.yml
+- name: include groups tasks
   tags: [linux-users, groups]
+  ansible.builtin.import_tasks: groups.yml
 
-- import_tasks: users.yml
+- name: include users tasks
   tags: [linux-users, users]
+  ansible.builtin.import_tasks: users.yml

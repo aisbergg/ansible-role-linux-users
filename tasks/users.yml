@@ -1,6 +1,6 @@
 ---
-- name: Manage Linux users
-  user:
+- name: manage Linux users
+  ansible.builtin.user:
     append:             "{{ user.append | default(omit) }}"
     comment:            "{{ user.comment | default(omit) }}"
     create_home:        "{{ user.create_home | default(omit) }}"
@@ -14,8 +14,10 @@
     name:               "{{ user.name }}"
     non_unique:         "{{ user.non_unique | default(omit) }}"
     password_lock:      "{{ user.password_lock | default(omit) }}"
-    password:           "{{ user.plain_password | pbkdf2_hash(rounds=linux_users_hash_rounds, scheme=linux_users_hash_scheme)
-                            if user.plain_password is defined else user.password | default(omit) }}"
+    password:           "{{ user.plain_password is defined | ternary(
+        user.plain_password | pbkdf2_hash(rounds=linux_users_hash_rounds, scheme=linux_users_hash_scheme),
+        user.password | default(omit))
+      }}"
     remove:             "{{ user.remove | default(omit) }}"
     seuser:             "{{ user.seuser | default(omit) }}"
     shell:              "{{ user.shell | default(omit) }}"
@@ -34,8 +36,8 @@
     loop_var: user
     label: "{{ user.name }} to be {{ user.state | default('present') }}"
 
-- name: Delete primary groups of absent users
-  group:
+- name: delete primary groups of absent users
+  ansible.builtin.group:
     name: "{{ user.group | default(user.name) }}"
     state: absent
   loop: "{{ linux_users | selectattr2('state', '==', 'absent') | list }}"
@@ -43,7 +45,7 @@
     loop_var: user
     label: "{{ user.name }}"
 
-- name: Manage authorized keys
+- name: manage authorized keys
   authorized_key:
     user:           "{{ user.name }}"
     key:            "{{ user.authorized_key.key | default(user.authorized_key) }}"
