@@ -2,7 +2,8 @@
 
 All notable changes to this project will be documented in this file.
 
-- [2.1.0 (2022-01-28)](#2.1.0-2022-01-28)
+- [2.1.1 (2022-03-31)](#211-2022-03-31)
+- [2.1.0 (2022-01-28)](#210-2022-01-28)
 - [2.0.0 (2021-10-11)](#200-2021-10-11)
 - [1.1.2 (2020-08-22)](#112-2020-08-22)
 - [1.1.1 (2020-05-18)](#111-2020-05-18)
@@ -10,8 +11,25 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+<a name="2.1.1"></a>
+## [2.1.1](https://github.com/aisbergg/ansible-role-linux-users/compare/v2.1.0...v2.1.1) (2022-03-31)
+
+### Bug Fixes
+
+- syntax for password option
+
+### CI Configuration
+
+- add branch explicitly to make Ansible import action happy
+- bump Ansible Galaxy action version
+
+### Chores
+
+- don't use bump2version to include the CHANGELOG in the bump commit, it doesn't do a good job
+
+
 <a name="2.1.0"></a>
-## [2.1.0](https://github.com/aisbergg/ansible-role-linux-users/compare/v2.0.0...2.1.0) (2022-01-28)
+## [2.1.0](https://github.com/aisbergg/ansible-role-linux-users/compare/v2.0.0...v2.1.0) (2022-01-28)
 
 ### CI Configuration
 
